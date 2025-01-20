@@ -1,0 +1,3 @@
+Trip Planner
+
+The Yathra Holidays Trip Planner is an AI-powered platform revolutionizing travel in Kerala by offering personalized recommendations, dynamic package customization, real-time booking, and seamless payments. Travelers can effortlessly create tailored itineraries, manage bookings, and enjoy AI-driven suggestions for a memorable journey. For administrators and staff, the system streamlines package management, payment verification, and feedback review, enhancing efficiency and customer satisfaction. Designed for scalability and user-friendliness, the platform adapts to evolving travel trends, ensuring Yathra Holidays stays ahead while enriching traveler experiences and fostering customer loyalty.

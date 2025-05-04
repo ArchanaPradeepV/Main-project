@@ -1,0 +1,336 @@
+{#{% extends 'temp/adminbase.html' %}#}
+{#{% block base %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Admin Manage Staff</title>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">#}
+{#    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>#}
+{#    <style>#}
+{#        body {#}
+{#            background: linear-gradient(to right, #1e3c72, #2a5298);#}
+{#            color: white;#}
+{#            font-family: 'Arial', sans-serif;#}
+{#        }#}
+{#        .table-container {#}
+{#            background: rgba(255, 255, 255, 0.1);#}
+{#            padding: 20px;#}
+{#            border-radius: 10px;#}
+{#            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);#}
+{#            margin-top: 50px;#}
+{#        }#}
+{#        .table th {#}
+{#            background: rgba(0, 0, 0, 0.3);#}
+{#            color: white;#}
+{#        }#}
+{#        .table-hover tbody tr:hover {#}
+{#            background: rgba(255, 255, 255, 0.2);#}
+{#        }#}
+{#        .btn {#}
+{#            margin: 5px;#}
+{#            border-radius: 5px;#}
+{#        }#}
+{#        .w-15{#}
+{#            width: 20% !important;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container">#}
+{#    <div class="text-center mt-4">#}
+{#        <h2>Admin Manage Staff</h2>#}
+{#    </div>#}
+{#    <div class="table-container mx-auto">#}
+{#        <table class="table table-bordered table-striped table-hover text-center">#}
+{#            <thead>#}
+{#                <tr>#}
+{#                    <th>NAME</th>#}
+{#                    <th>PLACE</th>#}
+{#                    <th>PHONE NUMBER</th>#}
+{#                    <th>EMAIL</th>#}
+{#                    <th>STATUS</th>#}
+{#                    <th class="w-25">ACTIONS</th>  <!-- Increased Width -->#}
+{#                </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#                {% for i in a %}#}
+{#                <tr>#}
+{#                    <td>{{ i.name }}</td>#}
+{#                    <td>{{ i.place }}</td>#}
+{#                    <td>{{ i.phone_number }}</td>#}
+{#                    <td>{{ i.email }}</td>#}
+{#                    <td>{{ i.status }}</td>#}
+{#                    <td class="w-25">#}
+{#                        <a href="/staff/edit/{{ i.staff_id }}" class="btn btn-success btn-sm">#}
+{#                            <i class="fas fa-edit"></i> Edit#}
+{#                        </a>#}
+{#                        <a href="/staff/delete/{{ i.staff_id }}" class="btn btn-danger btn-sm">#}
+{#                            <i class="fas fa-trash"></i> Delete#}
+{#                        </a>#}
+{#                        <a href="/staff/block/{{ i.staff_id }}" class="btn btn-warning btn-sm">#}
+{#                            <i class="fas fa-ban"></i> Block#}
+{#                        </a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{##}
+{##}
+{#{% extends 'temp/adminbase.html' %}#}
+{#{% block base %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Admin Manage Staff</title>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">#}
+{#    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container mt-3">  <!-- Reduced the top margin -->#}
+{#    <div class="text-center mt-4">#}
+{#        <h2 style="color: white">Admin Manage Staff</h2>#}
+{#    </div>#}
+{#    <div class="table-container mx-auto">#}
+{#        <table class="table table-bordered table-striped table-hover text-center">#}
+{#            <thead>#}
+{#                <tr>#}
+{#                    <th>NAME</th>#}
+{#                    <th>PLACE</th>#}
+{#                    <th>PHONE NUMBER</th>#}
+{#                    <th>EMAIL</th>#}
+{#                    <th>STATUS</th>#}
+{#                    <th class="w-25">ACTIONS</th>  <!-- Increased Width -->#}
+{#                </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#                {% for i in a %}#}
+{#                <tr>#}
+{#                    <td>{{ i.name }}</td>#}
+{#                    <td>{{ i.place }}</td>#}
+{#                    <td>{{ i.phone_number }}</td>#}
+{#                    <td>{{ i.email }}</td>#}
+{#                    <td>{{ i.status }}</td>#}
+{#                    <td class="w-25">#}
+{#                        <a href="/staff/edit/{{ i.staff_id }}" class="btn btn-success btn-sm">#}
+{#                            <i class="fas fa-edit"></i> Edit#}
+{#                        </a>#}
+{#                        <a href="/staff/delete/{{ i.staff_id }}" class="btn btn-danger btn-sm">#}
+{#                            <i class="fas fa-trash"></i> Delete#}
+{#                        </a>#}
+{#                        <a href="/staff/block/{{ i.staff_id }}" class="btn btn-warning btn-sm">#}
+{#                            <i class="fas fa-ban"></i> Block#}
+{#                        </a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{##}
+{##}
+{##}
+{#{% extends 'temp/adminbase.html' %}#}
+{#{% block base %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Admin Manage Staff</title>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">#}
+{#    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div class="container mt-3">#}
+{##}
+{#    <div class="text-center mt-4">#}
+{#        <h2 style="color: white">Admin Manage Staff</h2>#}
+{#    </div>#}
+{#    <div class="table-container mx-auto">#}
+{#        <table class="table table-bordered table-striped table-hover text-center">#}
+{#            <thead>#}
+{#                <tr>#}
+{#                    <th>NAME</th>#}
+{#                    <th>PLACE</th>#}
+{#                    <th>PHONE NUMBER</th>#}
+{#                    <th>EMAIL</th>#}
+{#                    <th>STATUS</th>#}
+{#                    <th class="w-25">ACTIONS</th>#}
+{#                </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#                {% for i in a %}#}
+{#                <tr>#}
+{#                    <td>{{ i.name }}</td>#}
+{#                    <td>{{ i.place }}</td>#}
+{#                    <td>{{ i.phone_number }}</td>#}
+{#                    <td>{{ i.email }}</td>#}
+{#                    <td>{{ i.status }}</td>#}
+{#                    <td class="w-25">#}
+{#                        <a href="/staff/edit/{{ i.staff_id }}" class="btn btn-success btn-sm">#}
+{#                            <i class="fas fa-edit"></i> Edit#}
+{#                        </a>#}
+{#                        <a href="/staff/delete/{{ i.staff_id }}" class="btn btn-danger btn-sm">#}
+{#                            <i class="fas fa-trash"></i> Delete#}
+{#                        </a>#}
+{#                        <a href="/staff/block/{{ i.staff_id }}" class="btn btn-warning btn-sm">#}
+{#                            <i class="fas fa-ban"></i> Block#}
+{#                        </a>#}
+{#                         <a href="/staff/adstaff/" class="btn btn-success btn-sm">#}
+{#                            <i class=""></i> Add#}
+{#                        </a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#                {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{##}
+{#    <!-- Pagination Controls -->#}
+{#    <nav aria-label="Page navigation">#}
+{#        <ul class="pagination justify-content-center">#}
+{#            {% if a.has_previous %}#}
+{#                <li class="page-item">#}
+{#                    <a class="page-link" href="?page=1">First</a>#}
+{#                </li>#}
+{#                <li class="page-item">#}
+{#                    <a class="page-link" href="?page={{ a.previous_page_number }}">Previous</a>#}
+{#                </li>#}
+{#            {% endif %}#}
+{##}
+{#            <li class="page-item active">#}
+{#                <span class="page-link">#}
+{#                    Page {{ a.number }} of {{ a.paginator.num_pages }}#}
+{#                </span>#}
+{#            </li>#}
+{##}
+{#            {% if a.has_next %}#}
+{#                <li class="page-item">#}
+{#                    <a class="page-link" href="?page={{ a.next_page_number }}">Next</a>#}
+{#                </li>#}
+{#                <li class="page-item">#}
+{#                    <a class="page-link" href="?page={{ a.paginator.num_pages }}">Last</a>#}
+{#                </li>#}
+{#            {% endif %}#}
+{#        </ul>#}
+{#    </nav>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+{% extends 'temp/adminbase2.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Manage Staff</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .table-container {
+            width: 100%;
+            max-width: 1200px; /* Make this wider if needed */
+            margin: auto;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid mt-3">
+    <div class="text-center mt-4">
+        <h2 style="color: black">Admin Manage Staff</h2>
+    </div>
+    <div class="table-container">
+        <table class="table table-bordered table-striped table-hover text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>NAME</th>
+                    <th>PLACE</th>
+                    <th>PHONE NUMBER</th>
+                    <th>EMAIL</th>
+                    <th>STATUS</th>
+                    <th class="w-25">ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in a %}
+                <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.phone_number }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.status }}</td>
+                    <td class="w-25">
+                        <a href="/staff/edit/{{ i.staff_id }}" class="btn btn-success btn-sm">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a href="/staff/delete/{{ i.staff_id }}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                        <a href="/staff/block/{{ i.staff_id }}" class="btn btn-warning btn-sm">
+                            <i class="fas fa-ban"></i> Block
+{#                        </a>#}
+{#                        <a href="/staff/adstaff/" class="btn btn-success btn-sm">#}
+{#                            <i class=""></i> Add#}
+{#                        </a>#}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if a.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ a.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+
+            <li class="page-item active">
+                <span class="page-link">
+                    Page {{ a.number }} of {{ a.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if a.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ a.next_page_number }}">Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ a.paginator.num_pages }}">Last</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
+{% endblock %}

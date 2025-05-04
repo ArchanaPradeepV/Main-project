@@ -1,0 +1,59 @@
+{% extends 'temp/userbase.html' %}
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 style="color: yellow">Suitable Package for this predictions are :  {% for i in kk %}{{ i.destination }}<br>{% endfor %}</h1>
+
+</body>
+</html>
+{% endblock %}
+
+
+{#{% extends 'temp/userbase.html' %}#}
+{#{% block base %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Recommended Packages</title>#}
+{#    <style>#}
+{#        .package-container {#}
+{#            display: flex;#}
+{#            flex-wrap: wrap;#}
+{#            gap: 20px;#}
+{#            padding: 20px;#}
+{#        }#}
+{#        .package-card {#}
+{#            background-color: #333;#}
+{#            color: white;#}
+{#            padding: 15px;#}
+{#            border-radius: 10px;#}
+{#            width: 300px;#}
+{#            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);#}
+{#        }#}
+{#        .package-card h2 {#}
+{#            color: yellow;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#    <h1 style="color: yellow; text-align: center;">Suitable Packages for Your Prediction</h1>#}
+{##}
+{#    <div class="package-container">#}
+{#        {% for package in kk %}#}
+{#        <div class="package-card">#}
+{#            <h2>{{ package.destination }}</h2>#}
+{#            <p><strong>Price:</strong> {{ package.price }}</p>#}
+{#            <p><strong>Duration:</strong> {{ package.duration }} days</p>#}
+{#            <p><strong>Includes:</strong> {{ package.inclusions }}</p>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

@@ -1,0 +1,185 @@
+
+
+{% extends 'temp/homebase.html' %}
+{% block base %}
+<html>
+<head>
+    <title>login</title>
+    <style>
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 15px; /* Reduced padding */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Set a fixed width */
+        }
+        table {
+            width: 100%;
+            margin: 10px 0;
+        }
+        td {
+            padding: 6px; /* Reduced padding */
+            text-align: left;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px; /* Reduced padding */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2>Login Page</h2>
+        <form method="post">
+
+                    {% if msg %}
+                        <div class="alert alert-info" role="alert">
+                        {{ msg }}
+                        </div>
+                    {% endif %}
+
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" name="un" required></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="ps" required></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+                <tr>
+
+                </tr>
+
+            </table>
+        </form>
+    </center>
+
+
+
+</body>
+</html>
+{% endblock %}
+
+
+
+
+{#{% extends 'temp/homebase.html' %}#}
+{#{% block base %}#}
+{#<html>#}
+{#<head>#}
+{#    <title>Login</title>#}
+{#    <style>#}
+        {#body {#}
+        {#    font-family: Arial, sans-serif;#}
+        {#    background-color: #222;#}
+        {#    color: white;#}
+        {#    display: flex;#}
+        {#    justify-content: center;#}
+        {#    align-items: center;#}
+        {#    height: 100vh;#}
+        {#}#}
+{#        h2 {#}
+{#            color: #ffcc00;#}
+{#        }#}
+{#        form {#}
+{#            background-color: #333;#}
+{#            padding: 20px;#}
+{#            border-radius: 8px;#}
+{#            box-shadow: 0 4px 8px rgba(255, 204, 0, 0.2);#}
+{#            width: 320px;#}
+{#        }#}
+{#        input {#}
+{#            width: 100%;#}
+{#            padding: 10px;#}
+{#            border: 1px solid #555;#}
+{#            border-radius: 4px;#}
+{#            background: #444;#}
+{#            color: white;#}
+{#        }#}
+{#        input[type="submit"] {#}
+{#            background-color: #ffcc00;#}
+{#            color: black;#}
+{#            padding: 10px;#}
+{#            border: none;#}
+{#            border-radius: 4px;#}
+{#            cursor: pointer;#}
+{#            width: 100%;#}
+{#            font-weight: bold;#}
+{#        }#}
+{#        input[type="submit"]:hover {#}
+{#            background-color: #e6b800;#}
+{#        }#}
+{#        .error {#}
+{#            color: #ff4d4d;#}
+{#            font-size: 14px;#}
+{#            margin-top: 5px;#}
+{#        }#}
+{#        .success {#}
+{#            color: #4CAF50;#}
+{#            font-size: 16px;#}
+{#            margin-bottom: 10px;#}
+{#        }#}
+{#    </style>#}
+{#    <script>#}
+{#        {% if success %}#}
+{#            setTimeout(function() {#}
+{#                window.location.href = "{{ redirect_url }}";#}
+{#            }, 3000); // Redirect after 3 seconds#}
+{#        {% endif %}#}
+{#     document.addEventListener("DOMContentLoaded", function () {#}
+{#      let redirectUrl = "{{ redirect_url }}";#}
+{#      if (redirectUrl) {#}
+{#          setTimeout(() => {#}
+{#              window.location.href = redirectUrl;#}
+{#          }, 3000);  // Redirects after 3 seconds#}
+{#      }#}
+{#  });#}
+{#    </script>#}
+{#</head>#}
+{#<body>#}
+{#    <center>#}
+{#        <h2>🔐 Login</h2>#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{##}
+{#            {% if msg %}#}
+{#                <div class="error">{{ msg }}</div>#}
+{#            {% endif %}#}
+{##}
+{#            {% if success %}#}
+{#                <div class="success">✅ Login successful! Redirecting in 3 seconds...</div>#}
+{#            {% endif %}#}
+{##}
+{#            <input type="text" name="un" placeholder="Username" required>#}
+{#            <input type="password" name="ps" placeholder="Password" required>#}
+{#            <input type="submit" value="Login">#}
+{#        </form>#}
+{#    </center>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}

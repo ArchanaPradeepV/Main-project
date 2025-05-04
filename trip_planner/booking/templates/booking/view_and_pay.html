@@ -1,0 +1,255 @@
+{#{% extends 'temp/userbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Staff View Packages</title>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">#}
+{#    <style>#}
+{#        body {#}
+{#            padding-top: 20px; /* Moves content to the top */#}
+{#        }#}
+{#        .table-container {#}
+{#            width: 90%;#}
+{#            margin: auto;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div class="container">#}
+{#    <div class="table-container">#}
+{#        <h2 class="text-center" style="color: white;">#}
+{#            <i class="fas fa-box"></i> view payment#}
+{#        </h2>#}
+{##}
+{##}
+{#      <table class="table table-bordered">#}
+{#    <thead>#}
+{#        <tr>#}
+{#            <th>PACKAGE</th>#}
+{#            <th>USER</th>#}
+{#            <th>DATE</th>#}
+{#            <th>STATUS</th>#}
+{#            <th>ACTION</th>#}
+{#        </tr>#}
+{#    </thead>#}
+{#    <tbody>#}
+{#        {% for i in a %}#}
+{#        <tr>#}
+{#            <td>{{ i.package.descriptiom }}</td>#}
+{#            <td>{{ i.user.name }}</td>#}
+{#            <td>{{ i.date }}</td>#}
+{#            <td>{{ i.status }}</td>#}
+{#            <td>#}
+{#                {% if i.status == "Accepted" %}#}
+{#                    <a href="/paymentrazor/payment-form/{{ i.booking_id }}">Pay</a>#}
+{#                {% elif i.status == "paid" %}#}
+{#                    Payment Completed#}
+{#                {% else %}#}
+{#                    No Action#}
+{#                {% endif %}#}
+{#            </td>#}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#    </tbody>#}
+{#</table>#}
+{##}
+{##}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{#{% extends 'temp/userbase2.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Staff View Packages</title>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">#}
+{#    <style>#}
+{#        body {#}
+{#            padding-top: 20px; /* Moves content to the top */#}
+{#        }#}
+{#        .table-container {#}
+{#            width: 90%;#}
+{#            margin: auto;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div class="container">#}
+{#    <div class="table-container">#}
+{#        <h2 class="text-center" style="color: white;">#}
+{#            <i class="fas fa-box"></i> view payment#}
+{#        </h2>#}
+{##}
+{#      <table class="table table-bordered">#}
+{#    <thead>#}
+{#        <tr>#}
+{#            <th>PACKAGE</th>#}
+{#            <th>DATE</th>#}
+{#            <th>STATUS</th>#}
+{#            <th>ACTION</th>#}
+{#        </tr>#}
+{#    </thead>#}
+{#    <tbody>#}
+{#        {% for i in a %}#}
+{#        <tr>#}
+{#            <td>{{ i.package.descriptiom }}</td>#}
+{#            <td>{{ i.date }}</td>#}
+{#            <td>{{ i.status }}</td>#}
+{#            <td>#}
+{#                {% if i.status == "Accepted" %}#}
+{#                    <a href="/paymentrazor/payment-form/{{ i.booking_id }}">Pay</a>#}
+{#                {% elif i.status == "paid" %}#}
+{#                    Payment Completed#}
+{#                {% else %}#}
+{#                    No Action#}
+{#                {% endif %}#}
+{#            </td>#}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#    </tbody>#}
+{#</table>#}
+{##}
+{#<!-- Pagination Controls -->#}
+{#<div class="pagination justify-content-center">#}
+{#    <ul class="pagination">#}
+{#        {% if a.has_previous %}#}
+{#            <li class="page-item"><a class="page-link" href="?page=1">&laquo; First</a></li>#}
+{#            <li class="page-item"><a class="page-link" href="?page={{ a.previous_page_number }}">Previous</a></li>#}
+{#        {% endif %}#}
+{##}
+{#        <li class="page-item disabled"><a class="page-link">Page {{ a.number }} of {{ a.paginator.num_pages }}</a></li>#}
+{##}
+{#        {% if a.has_next %}#}
+{#            <li class="page-item"><a class="page-link" href="?page={{ a.next_page_number }}">Next</a></li>#}
+{#            <li class="page-item"><a class="page-link" href="?page={{ a.paginator.num_pages }}">Last &raquo;</a></li>#}
+{#        {% endif %}#}
+{#    </ul>#}
+{#</div>#}
+{##}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+{% extends 'temp/userbase2.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View Payment</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            background-color: #f8f9fa;
+            font-size: 1.1rem;
+        }
+        .table-container {
+            width: 100%;
+            margin: auto;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: black;
+        }
+        .table {
+            font-size: 1.1rem;
+            background-color: white;
+        }
+        .table th, .table td {
+            padding: 1rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+        .page-link {
+            padding: 0.6rem 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">  <!-- Added mt-5 to push content down -->
+    <div class="table-container">
+        <h2 class="text-center mt-4"> <!-- Optional: also added mt-4 for extra spacing -->
+            <i class="fas fa-credit-card" style="color:black;"></i> View Payment
+        </h2>
+
+
+
+        <table class="table table-bordered shadow">
+            <thead class="table-dark">
+                <tr>
+                    <th>PACKAGE</th>
+                    <th>DATE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in a %}
+                <tr>
+                    <td>{{ i.package.descriptiom }}</td>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.status }}</td>
+                    <td>
+                        {% if i.status == "Accepted" %}
+                            <a href="/paymentrazor/payment-form/{{ i.booking_id }}" class="btn btn-primary btn-sm">Pay</a>
+                        {% elif i.status == "paid" %}
+                            <span class="text-success fw-bold">Payment Completed</span>
+                        {% else %}
+                            <span class="text-muted">No Action</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            <ul class="pagination">
+                {% if a.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ a.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ a.number }} of {{ a.paginator.num_pages }}</span>
+                </li>
+                {% if a.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ a.next_page_number }}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ a.paginator.num_pages }}">Last</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

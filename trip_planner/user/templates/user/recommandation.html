@@ -1,0 +1,76 @@
+{% extends 'temp/homebase.html' %}
+
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Trip Planner Form</h2>
+    <form action="#" method="post">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" required>
+
+        <label for="category">Category Type:</label>
+        <select id="category" name="category" required>
+            <option value="adventure">Adventure</option>
+            <option value="cultural">Cultural</option>
+            <option value="nature">Nature</option>
+        </select>
+
+        <label for="travel-style">Travel Style:</label>
+        <select id="travel-style" name="travel_style" required>
+            <option value="solo">Solo</option>
+            <option value="family">Family</option>
+            <option value="couple">Couple</option>
+            <option value="friends">Friends</option>
+            <option value="group">Group</option>
+            <option value="business">Business</option>
+        </select>
+
+        <label for="days">Number of Days:</label>
+        <input type="number" id="days" name="days" min="1" required>
+
+        <label for="budget">Budget:</label>
+        <select id="budget" name="budget" required>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+{% endblock %}

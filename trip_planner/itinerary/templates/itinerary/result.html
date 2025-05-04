@@ -1,0 +1,184 @@
+{% extends 'temp/userbase4.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customization Output</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Heading */
+        h2 {
+            margin-bottom: 10px;
+            font-size: 26px;
+            text-transform: uppercase;
+        }
+
+        /* Trip Details */
+        p {
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        /* Trip Plan Box */
+        pre {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+            font-weight: bold;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Button */
+        .btn-custom {
+            display: inline-block;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 25px;
+            text-decoration: none;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(45deg, #e67e22, #d35400);
+            transform: scale(1.05);
+        }
+        /* Center the form properly */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Ensure the form is centered */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Ensures perfect centering */
+}
+        /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensures full page height */
+    display: flex;
+    flex-direction: column; /* Keeps navbar at the top */
+    align-items: center;
+}
+
+/* Navbar Fix */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    z-index: 1000;
+}
+
+/* Ensure the form is centered */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 100px; /* Moves the form below navbar */
+}
+pre {
+    background: rgba(255, 255, 255, 0.95); /* Increase background opacity for better readability */
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+    font-weight: normal;
+    color: #2c3e50; /* Dark text for better contrast */
+    font-size: 16px;
+    line-height: 1.6; /* Increase line spacing for better readability */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Slight border for clarity */
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="color: white">Customized Trip Details</h2>
+        <p><strong>Destination:</strong> {{ obj.destination }}</p> <!-- Ensure 'destination' is accessed from obj -->
+        <p><strong>Budget:</strong> {{ obj.budget }}</p>
+        <p><strong>Days:</strong> {{ obj.days }}</p>
+
+        <h3>Trip Plan:</h3>
+<pre>{{ cust }}</pre> <!-- Displays AI-generated itinerary properly -->
+
+
+        <a href="{% url 'customizeitin' %}" class="btn-custom">Customize Again</a>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}
+
+

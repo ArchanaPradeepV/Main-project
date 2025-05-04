@@ -1,0 +1,393 @@
+{#{% extends 'temp/adminbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Admin Monthly Report</title>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+{#    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>#}
+{#    <style>#}
+{#        .report-container {#}
+{#            background: #fff;#}
+{#            padding: 30px 40px;#}
+{#            border-radius: 20px;#}
+{#            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);#}
+{#            max-width: 900px;#}
+{#            width: 100%;#}
+{#            margin: 20px auto;#}
+{#        }#}
+{#        h2 {#}
+{#            font-weight: 600;#}
+{#            color: #34495e;#}
+{#            margin-bottom: 25px;#}
+{#            text-align: center;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center align-items-center">#}
+{#    <div class="report-container">#}
+{#        <h2><i class="fas fa-chart-pie"></i> Monthly Report</h2>#}
+{#        {% if reports %}#}
+{#            <canvas id="bookingChart"></canvas>#}
+{#            <canvas id="revenueChart" style="margin-top: 40px;"></canvas>#}
+{#        {% else %}#}
+{#            <p class="no-report">No reports available for this month.</p>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<script>#}
+{#    const reports = {{ reports|safe }};#}
+{#    const labels = reports.map(r => r.month);#}
+{#    const bookings = reports.map(r => r.total_bookings);#}
+{#    const revenue = reports.map(r => r.revenue);#}
+{##}
+{#    const ctxBookings = document.getElementById('bookingChart').getContext('2d');#}
+{#    const bookingChart = new Chart(ctxBookings, {#}
+{#        type: 'pie',#}
+{#        data: {#}
+{#            labels: labels,#}
+{#            datasets: [{#}
+{#                label: 'Total Bookings',#}
+{#                data: bookings,#}
+{#                backgroundColor: [#}
+{#                    '#6a11cb', '#2575fc', '#f39c12', '#e74c3c', '#2ecc71', '#1abc9c', '#9b59b6', '#34495e', '#d35400', '#c0392b', '#7f8c8d', '#95a5a6'#}
+{#                ],#}
+{#            }]#}
+{#        }#}
+{#    });#}
+{##}
+{#    const ctxRevenue = document.getElementById('revenueChart').getContext('2d');#}
+{#    const revenueChart = new Chart(ctxRevenue, {#}
+{#        type: 'pie',#}
+{#        data: {#}
+{#            labels: labels,#}
+{#            datasets: [{#}
+{#                label: 'Total Revenue (₹)',#}
+{#                data: revenue,#}
+{#                backgroundColor: [#}
+{#                    '#6a11cb', '#2575fc', '#f39c12', '#e74c3c', '#2ecc71', '#1abc9c', '#9b59b6', '#34495e', '#d35400', '#c0392b', '#7f8c8d', '#95a5a6'#}
+{#                ],#}
+{#            }]#}
+{#        }#}
+{#    });#}
+{#</script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{##}
+{#{% extends 'temp/adminbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Admin Monthly Report</title>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+{#    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>#}
+{#    <style>#}
+{#        .report-container {#}
+{#            background: #fff;#}
+{#            padding: 30px 40px;#}
+{#            border-radius: 20px;#}
+{#            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);#}
+{#            max-width: 900px;#}
+{#            width: 100%;#}
+{#            margin: 20px auto;#}
+{#        }#}
+{#        h2 {#}
+{#            font-weight: 600;#}
+{#            color: #34495e;#}
+{#            margin-bottom: 25px;#}
+{#            text-align: center;#}
+{#        }#}
+{#        #combinedChart {#}
+{#            max-width: 400px;#}
+{#            max-height: 400px;#}
+{#            margin: 0 auto;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center align-items-center">#}
+{#    <div class="report-container">#}
+{#        <h2><i class="fas fa-chart-pie"></i> Monthly Report</h2>#}
+{#        {% if reports %}#}
+{#            <canvas id="combinedChart"></canvas>#}
+{#        {% else %}#}
+{#            <p class="no-report">No reports available for this month.</p>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<script>#}
+{#    const reports = {{ reports|safe }};#}
+{#    const labels = reports.map(r => r.month);#}
+{#    const bookings = reports.map(r => r.total_bookings);#}
+{#    const revenue = reports.map(r => r.revenue);#}
+{##}
+{#    const ctxCombined = document.getElementById('combinedChart').getContext('2d');#}
+{#    const combinedChart = new Chart(ctxCombined, {#}
+{#        type: 'pie',#}
+{#        data: {#}
+{#            labels: labels,#}
+{#            datasets: [{#}
+{#                label: 'Total Bookings',#}
+{#                data: bookings,#}
+{#                backgroundColor: [#}
+{#                    '#6a11cb', '#2575fc', '#f39c12', '#e74c3c', '#2ecc71', '#1abc9c', '#9b59b6', '#34495e', '#d35400', '#c0392b', '#7f8c8d', '#95a5a6'#}
+{#                ],#}
+{#            }, {#}
+{#                label: 'Total Revenue (₹)',#}
+{#                data: revenue,#}
+{#                backgroundColor: [#}
+{#                    '#ff5733', '#33ff57', '#3357ff', '#ff33a8', '#a833ff', '#33fff3', '#f3ff33', '#ff8c33', '#33ffa5', '#ff3333', '#75ff33', '#ff3375'#}
+{#                ],#}
+{#            }]#}
+{#        }#}
+{#    });#}
+{#</script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#{% extends 'temp/adminbase2.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Admin Monthly Report</title>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+{#    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>#}
+{#    <style>#}
+{#        .report-container {#}
+{#            background: #fff;#}
+{#            padding: 30px 40px;#}
+{#            border-radius: 20px;#}
+{#            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);#}
+{#            max-width: 900px;#}
+{#            width: 100%;#}
+{#            margin: 20px auto;#}
+{#        }#}
+{#        h2 {#}
+{#            font-weight: 600;#}
+{#            color: #34495e;#}
+{#            margin-bottom: 25px;#}
+{#            text-align: center;#}
+{#        }#}
+{#        #combinedChart {#}
+{#            max-width: 400px;#}
+{#            max-height: 400px;#}
+{#            margin: 0 auto 20px;#}
+{#        }#}
+{#        .report-table {#}
+{#            width: 100%;#}
+{#            border-collapse: collapse;#}
+{#            margin-top: 20px;#}
+{#        }#}
+{#        .report-table th, .report-table td {#}
+{#            padding: 12px 15px;#}
+{#            border: 1px solid #dcdcdc;#}
+{#            text-align: left;#}
+{#        }#}
+{#        .report-table th {#}
+{#            background: #6a11cb;#}
+{#            color: #fff;#}
+{#        }#}
+{#        .report-table tr:nth-child(even) {#}
+{#            background: #f9f9f9;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center align-items-center">#}
+{#    <div class="report-container">#}
+{#        <h2><i class="fas fa-chart-pie"></i> Monthly Report</h2>#}
+{#        {% if reports %}#}
+{#            <canvas id="combinedChart"></canvas>#}
+{#            <table class="report-table">#}
+{#                <thead>#}
+{#                    <tr>#}
+{#                        <th>Month</th>#}
+{#                        <th>Total Bookings</th>#}
+{#                        <th>Total Revenue (₹)</th>#}
+{#                    </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                    {% for report in reports %}#}
+{#                        <tr>#}
+{#                            <td>{{ report.month }}</td>#}
+{#                            <td>{{ report.total_bookings }}</td>#}
+{#                            <td>{{ report.revenue }}</td>#}
+{#                        </tr>#}
+{#                    {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
+{#        {% else %}#}
+{#            <p class="no-report">No reports available for this month.</p>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</div>#}
+{#<form method="GET" action="{% url 'admin_monthly_report' %}">#}
+{#    <label for="year">Select Year:</label>#}
+{#    <input type="text" id="year" name="year" value="{{ selected_year|default:2025 }}" required>#}
+{#    <button type="submit">Generate Report</button>#}
+{#</form>#}
+{##}
+{#<script>#}
+{#    const reports = {{ reports|safe }};#}
+{#    const labels = reports.map(r => r.month);#}
+{#    const bookings = reports.map(r => r.total_bookings);#}
+{#    const revenue = reports.map(r => r.revenue);#}
+{##}
+{#    const ctxCombined = document.getElementById('combinedChart').getContext('2d');#}
+{#    const combinedChart = new Chart(ctxCombined, {#}
+{#        type: 'pie',#}
+{#        data: {#}
+{#            labels: labels,#}
+{#            datasets: [{#}
+{#                label: 'Total Bookings',#}
+{#                data: bookings,#}
+{#                backgroundColor: [#}
+{#                    '#6a11cb', '#2575fc', '#f39c12', '#e74c3c', '#2ecc71', '#1abc9c', '#9b59b6', '#34495e', '#d35400', '#c0392b', '#7f8c8d', '#95a5a6'#}
+{#                ],#}
+{#            }, {#}
+{#                label: 'Total Revenue (₹)',#}
+{#                data: revenue,#}
+{#                backgroundColor: [#}
+{#                    '#ff5733', '#33ff57', '#3357ff', '#ff33a8', '#a833ff', '#33fff3', '#f3ff33', '#ff8c33', '#33ffa5', '#ff3333', '#75ff33', '#ff3375'#}
+{#                ],#}
+{#            }]#}
+{#        }#}
+{#    });#}
+{#</script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+{##}
+{##}
+{##}
+{##}
+{##}
+
+
+
+
+
+{% extends 'temp/adminbase2.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Monthly Report</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        {#body {#}
+        {#    font-family: 'Poppins', sans-serif;#}
+        {#    background: #f4f7fc;#}
+        {#}#}
+        .report-container {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1100px; /* Increased width */
+            width: 100%;
+            margin: 30px auto;
+        }
+        h2 {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        #barChart {
+            max-width: 850px; /* Increased size */
+            max-height: 500px; /* Increased size */
+            margin: 0 auto;
+        }
+        .no-report {
+            text-align: center;
+            color: #777;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="report-container">
+        <h2><i class="fas fa-chart-bar"></i> Monthly Report</h2>
+        {% if reports %}
+            <canvas id="barChart"></canvas>
+        {% else %}
+            <p class="no-report">No reports available for this month.</p>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    const reports = {{ reports|safe }};
+    const labels = reports.map(r => r.month);
+    const bookings = reports.map(r => r.total_bookings);
+    const revenue = reports.map(r => r.revenue);
+
+    const ctx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Bookings',
+                data: bookings,
+                backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                borderRadius: 10
+            },
+            {
+                label: 'Total Revenue (₹)',
+                data: revenue,
+                backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                borderRadius: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
+
+{% endblock %}

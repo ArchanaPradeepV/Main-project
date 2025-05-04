@@ -1,0 +1,239 @@
+{#{% extends 'temp/userbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>booking</title>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center">#}
+{#    <div class="form-container">#}
+{#        <h2 class="text-center"><i class="fas fa-map"></i> user booking</h2>#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{##}
+{#                <input type="date" id="" name="bb" placeholder="date" required>#}
+{#            <input type="time" id="" name="nj" placeholder="time" required>#}
+{##}
+{##}
+{#            <div class="text-center mt-3">#}
+{#                <input type="submit" class="btn-custom">Submit</input>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+{#{% extends 'temp/userbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Staff Add Itinerary</title>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+{#    <style>#}
+        {#body {#}
+        {#    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);#}
+        {#    font-family: 'Poppins', sans-serif;#}
+        {#}#}
+        {#.container {#}
+        {#    margin-top: 80px;#}
+        {#    width: 100%;#}
+        {#    max-width: 500px;#}
+        {#}#}
+{#        .form-container {#}
+{#            background: #fff;#}
+{#            padding: 30px 40px;#}
+{#            border-radius: 20px;#}
+{#            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);#}
+{#        }#}
+{#        h2 {#}
+{#            font-weight: 600;#}
+{#            color: #34495e;#}
+{#            margin-bottom: 25px;#}
+{#        }#}
+{#        input[type="date"], input[type="time"] {#}
+{#            width: 100%;#}
+{#            padding: 12px 15px;#}
+{#            margin: 15px 0;#}
+{#            border: 2px solid #dcdcdc;#}
+{#            border-radius: 10px;#}
+{#            font-size: 16px;#}
+{#            outline: none;#}
+{#            transition: border-color 0.3s ease;#}
+{#        }#}
+{#        input[type="date"]:focus, input[type="time"]:focus {#}
+{#            border-color: #3498db;#}
+{#        }#}
+{#        .btn-custom {#}
+{#            background: linear-gradient(135deg, #6a11cb, #2575fc);#}
+{#            color: #fff;#}
+{#            border: none;#}
+{#            padding: 12px 25px;#}
+{#            font-size: 16px;#}
+{#            border-radius: 50px;#}
+{#            cursor: pointer;#}
+{#            transition: background 0.3s ease, transform 0.2s;#}
+{#        }#}
+{#        .btn-custom:hover {#}
+{#            background: linear-gradient(135deg, #2575fc, #6a11cb);#}
+{#            transform: scale(1.05);#}
+{#        }#}
+{#        .text-center i {#}
+{#            color: #6a11cb;#}
+{#            margin-right: 8px;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center align-items-center">#}
+{#    <div class="form-container">#}
+{#        <h2 class="text-center"><i class="fas fa-map"></i> Booking Package</h2>#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <label for="date">Select Date</label>#}
+{#            <input type="date" id="myDate" name="bb" placeholder="Date" required>#}
+{##}
+{#            <label for="time">Select Time</label>#}
+{#            <input type="time" id="time" name="nj" placeholder="Time" required>#}
+{##}
+{#            <div class="text-center mt-4">#}
+{#                <input type="submit" class="btn-custom" value="Submit">#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{#<script>#}
+{#    // Get today's date in YYYY-MM-DD format#}
+{#    let today = new Date().toISOString().split("T")[0];#}
+{##}
+{#    // Set the min attribute to disable past dates#}
+{#    document.getElementById("myDate").setAttribute("min", today);#}
+{##}
+{#    // Optional: Prevent form submission if an invalid date is entered#}
+{#    document.querySelector("form").addEventListener("submit", function(event) {#}
+{#        let selectedDate = document.getElementById("myDate").value;#}
+{#        if (selectedDate < today) {#}
+{#            alert("You cannot select a past date!");#}
+{#            event.preventDefault(); // Prevent form submission#}
+{#        }#}
+{#    });#}
+{#</script>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+{% extends 'temp/userbase.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Staff Add Itinerary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .form-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 25px;
+        }
+        input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border: 2px solid #dcdcdc;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input:focus {
+            border-color: #3498db;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
+        }
+        .text-center i {
+            color: #6a11cb;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="form-container">
+        <h2 class="text-center"><i class="fas fa-map"></i> Booking Package</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Date Selection -->
+            <label for="myDate">Select Date</label>
+            <input type="date" id="myDate" name="bb" placeholder="Date" required>
+
+            <!-- Adults Count -->
+            <label for="adults">Number of Adults</label>
+            <input type="number" id="ad" name="ad" placeholder="Adults" min="1" required>
+
+            <!-- Children Count -->
+            <label for="children">Number of Children</label>
+            <input type="number" id="ch" name="ch" placeholder="Children" min="0" required>
+
+            <div class="text-center mt-4">
+                <input type="submit" class="btn-custom" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Get today's date in YYYY-MM-DD format
+    let today = new Date().toISOString().split("T")[0];
+
+    // Set the min attribute to disable past dates
+    document.getElementById("myDate").setAttribute("min", today);
+
+    // Optional: Prevent form submission if an invalid date is entered
+    document.querySelector("form").addEventListener("submit", function(event) {
+        let selectedDate = document.getElementById("myDate").value;
+        if (selectedDate < today) {
+            alert("You cannot select a past date!");
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
+
+</body>
+</html>
+{% endblock %}

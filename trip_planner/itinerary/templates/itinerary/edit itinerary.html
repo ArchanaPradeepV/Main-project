@@ -1,0 +1,89 @@
+{#{% extends 'temp/staffbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#	<meta charset="utf-8">#}
+{#	<meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#	<title></title>#}
+{#    <style>#}
+{#		/* Adding some space between input fields */#}
+{#		input[type="text"], input[type="number"],input[type="submit"],textarea {#}
+{#			margin-bottom: 15px; /* Adjust this value to change the space */#}
+{#		}#}
+{#	</style>#}
+{#</head>#}
+{#<body>#}
+{#<center>#}
+{#	<form method="post">#}
+{#        {% csrf_token %}#}
+{#		<h2 style="color: white">Staff edit itinerary</h2>#}
+{#		<table>#}
+{#			<tr>#}
+{#				<td style="color: white">Description</td>#}
+{#                <td><textarea name="des" style="border-radius: 10px;border: black" class="form-control" required="" cols="60" rows="7">value="{{ s.description }}"</textarea></</td>#}
+{#			</tr>#}
+{#            <tr>#}
+{#				<td></td>#}
+{#				<td><input type="submit"style="border-radius: 10px;border: black" value="submit" class="button btn-warning"></td>#}
+{#			</tr>#}
+{#		</table>#}
+{#	</form>#}
+{#</center>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'temp/staffbase.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color: white">Staff Edit Itinerary</title>
+    <style>
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: none;
+            font-size: 16px;
+        }
+        .submit-btn {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <h2 style="color: white">Staff Edit Itinerary</h2>
+            <div>
+                <label for="des" style="color: white"><strong>Description</strong></label><br>
+                <textarea name="des" id="des" rows="7" required>{{ s.description }}</textarea>
+            </div>
+            <br>
+            <input type="submit" value="Submit" class="submit-btn">
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}

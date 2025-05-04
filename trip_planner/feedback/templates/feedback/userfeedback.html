@@ -1,0 +1,114 @@
+{% extends 'temp/userbase4.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .form-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 25px;
+        }
+        textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border: 2px solid #dcdcdc;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        textarea:focus, select:focus {
+            border-color: #3498db;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            transform: scale(1.05);
+        }
+        .text-center i {
+            color: #6a11cb;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+{#<div class="container d-flex justify-content-center align-items-center">#}
+{#    <div class="form-container">#}
+{#        <h2 class="text-center"><i class="fas fa-comments"></i> User Feedback</h2>#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{##}
+{#            <!-- Rating -->#}
+{#            <label for="rating" style="color: black">Rate Your Experience</label>#}
+{#            <select id="rating" name="rating">#}
+{#                <option value="">Select Rating</option>#}
+{#                <option value="5">5 - Excellent</option>#}
+{#                <option value="4">4 - Very Good</option>#}
+{#                <option value="3">3 - Good</option>#}
+{#                <option value="2">2 - Fair</option>#}
+{#                <option value="1">1 - Poor</option>#}
+{#            </select>#}
+{##}
+{#            <!-- Comments -->#}
+{#            <label for="comments" style="color: black">Your Feedback</label>#}
+{#            <textarea id="comments" name="comments" rows="5" placeholder="Write your feedback here..."required ></textarea>#}
+{##}
+{#            <div class="text-center mt-4">#}
+{#                <input type="submit" class="btn-custom" value="Submit Feedback">#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+
+
+<div class="container d-flex justify-content-center align-items-start mt-5" style="min-height: 100vh;">
+    <div class="form-container w-100" style="max-width: 700px;">
+        <h2 class="text-center"><i class="fas fa-comments"></i> User Feedback</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="rating" style="color: black">Rate Your Experience</label>
+            <select id="rating" name="rating">
+                <option value="">Select Rating</option>
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Very Good</option>
+                <option value="3">3 - Good</option>
+                <option value="2">2 - Fair</option>
+                <option value="1">1 - Poor</option>
+            </select>
+
+            <label for="comments" style="color: black">Your Feedback</label>
+            <textarea id="comments" name="comments" rows="5" placeholder="Write your feedback here..." required></textarea>
+
+            <div class="text-center mt-4">
+                <input type="submit" class="btn-custom" value="Submit Feedback">
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

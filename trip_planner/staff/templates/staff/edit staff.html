@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Staff</title>
+
+    <!-- Bootstrap & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            width: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .form-container:hover {
+            transform: scale(1.02);
+        }
+        .form-control {
+            border-radius: 8px;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            color: black;
+            transition: all 0.3s ease-in-out;
+        }
+        .form-control:focus {
+            border: 2px solid #2ecc71;
+            box-shadow: 0px 0px 10px rgba(46, 204, 113, 0.5);
+            outline: none;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
+        .btn-custom {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            border: none;
+            display: inline-block;
+        }
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+        }
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+
+    <script>
+        function capitalizeFirstLetter(event) {
+            const input = event.target;
+            input.value = input.value.charAt(0).toUpperCase() + input.value.slice(1);
+        }
+
+        function validateField(inputId, errorId, regex, errorMessage) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            if (input.value.trim() === "") {
+                error.style.display = 'none';
+                return true; // no error for empty field
+            }
+            if (!regex.test(input.value)) {
+                error.textContent = errorMessage;
+                error.style.display = 'block';
+                return false;
+            } else {
+                error.style.display = 'none';
+                return true;
+            }
+        }
+
+        function validateForm(event) {
+            let isValid = true;
+            isValid &= validateField('na', 'nameError', /^[A-Za-z ]+$/, 'Invalid name. Only letters allowed.');
+            isValid &= validateField('pl', 'placeError', /^[A-Za-z]+$/, 'Invalid place. Only letters allowed.');
+            isValid &= validateField('ph', 'phoneError', /^[6-9]\d{9}$/, 'Invalid phone number. Must be 10 digits and start with 6-9.');
+            isValid &= validateField('em', 'emailError', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address.');
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        }
+    </script>
+</head>
+<body>
+<center>
+    <h2 class="mt-4"><i class="fas fa-user-edit"></i> Edit Staff</h2>
+    <div class="form-container mt-3">
+
+        <form method="post" onsubmit="validateForm(event)">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label"><i class="fas fa-user"></i> Name</label>
+{#                <input type="text" id="na" name="na" class="form-control" value="{{ s.name }}" required oninput="capitalizeFirstLetter(event)" onblur="validateField('na', 'nameError', /^[A-Za-z]+$/, 'Invalid name. Only letters allowed.')">#}
+                <input type="text" id="na" name="na" class="form-control" value="{{ s.name }}" required
+       oninput="capitalizeFirstLetter(event)"
+       onblur="validateField('na', 'nameError', /^[A-Za-z ]+$/, 'Invalid name. Only letters and spaces allowed.')">
+
+                <div id="nameError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"><i class="fas fa-map-marker-alt"></i> Place</label>
+                <input type="text" id="pl" name="pl" class="form-control" value="{{ s.place }}" required oninput="capitalizeFirstLetter(event)" onblur="validateField('pl', 'placeError', /^[A-Za-z]+$/, 'Invalid place. Only letters allowed.')">
+                <div id="placeError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"><i class="fas fa-phone"></i> Phone Number</label>
+                <input type="text" id="ph" name="ph" class="form-control" required pattern="^[6-9]\d{9}$" minlength="10" maxlength="10" value="{{ s.phone_number }}" onblur="validateField('ph', 'phoneError', /^[6-9]\d{9}$/, 'Invalid phone number. Must be 10 digits and start with 6-9.')">
+                <div id="phoneError" class="error-message"></div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" id="em" name="em" class="form-control" value="{{ s.email }}" required onblur="validateField('em', 'emailError', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address.')">
+                <div id="emailError" class="error-message"></div>
+            </div>
+            <button type="submit" class="btn btn-custom btn-warning"><i class="fas fa-save"></i> Submit</button>
+        </form>
+    </div>
+</center>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

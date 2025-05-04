@@ -1,0 +1,475 @@
+{#{% extends 'temp/homebase.html' %}#}
+{##}
+{#{% block base %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Registration</title>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">#}
+{#    <style>#}
+{#        h2 {#}
+{#            color: #4CAF50;#}
+{#            margin-bottom: 20px;#}
+{#        }#}
+{#        form {#}
+{#            background-color: #f9f9f9;#}
+{#            padding: 20px;#}
+{#            border-radius: 8px;#}
+{#            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);#}
+{#            width: 300px;#}
+{#        }#}
+{#        .error-message {#}
+{#            color: red;#}
+{#            font-size: 12px;#}
+{#        }#}
+{#    </style>#}
+{#    <script>#}
+{#        function capitalizeFirstLetter(event) {#}
+{#            const input = event.target;#}
+{#            input.value = input.value.charAt(0).toUpperCase() + input.value.slice(1);#}
+{#        }#}
+{##}
+{#        function validateField(inputId, errorId, regex, errorMessage) {#}
+{#            const input = document.getElementById(inputId);#}
+{#            const error = document.getElementById(errorId);#}
+{#            if (input.value.trim() === "") {#}
+{#                error.style.display = 'none';#}
+{#                return;#}
+{#            }#}
+{#            if (!regex.test(input.value)) {#}
+{#                error.textContent = errorMessage;#}
+{#                error.style.display = 'block';#}
+{#            } else {#}
+{#                error.style.display = 'none';#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center">#}
+{#    <div class="card text-center">#}
+{#        <h2 class="mb-4" style="color: black">User Registration</h2>#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <div class="mb-3">#}
+{#                <label for="na">Name</label>#}
+{#                <input type="text" id="na" name="na" class="form-control" required pattern="^[A-Za-z]+$"#}
+{#                       title="Only letters allowed" oninput="capitalizeFirstLetter(event)"#}
+{#                       onblur="validateField('na', 'nameError', /^[A-Za-z]+$/, 'Invalid name. Only letters allowed.')">#}
+{#                <div id="nameError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="pl">Place</label>#}
+{#                <input type="text" id="pl" name="pl" class="form-control" required pattern="^[A-Za-z]+$"#}
+{#                       title="Only letters allowed" oninput="capitalizeFirstLetter(event)"#}
+{#                       onblur="validateField('pl', 'placeError', /^[A-Za-z]+$/, 'Invalid place. Only letters allowed.')">#}
+{#                <div id="placeError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="ph">Phone Number</label>#}
+{#                <input type="text" id="ph" name="ph" class="form-control" required pattern="^[6-9]\d{9}$"#}
+{#                       minlength="10" maxlength="10" title="Valid 10-digit number starting with 6-9"#}
+{#                       onblur="validateField('ph', 'phoneError', /^[6-9]\d{9}$/, 'Invalid phone number. Must be 10 digits and start with 6-9.')">#}
+{#                <div id="phoneError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="em">Email</label>#}
+{#                <input type="email" id="em" name="em" class="form-control" required#}
+{#                       onblur="validateField('em', 'emailError', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address.')">#}
+{#                <div id="emailError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="us">Username</label>#}
+{#                <input type="text" id="un" name="un" class="form-control" required>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="ps">Password</label>#}
+{#                <input type="password" id="ps" name="ps" class="form-control" required>#}
+{#            </div>#}
+{#            <div class="d-grid gap-2">#}
+{#                <button type="reset" class="btn btn-secondary">Cancel</button>#}
+{#                <button type="submit" class="btn btn-primary">Register</button>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{##}
+{##}
+{#<div class="container d-flex justify-content-center">#}
+{#    <div class="card text-center">#}
+{#        <h2 class="mb-4" style="color: black">User Registration</h2>#}
+{##}
+{#        {% if msg %}#}
+{#        <div class="alert alert-info" role="alert">#}
+{#            {{ msg }}#}
+{#        </div>#}
+{#        {% endif %}#}
+{##}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <div class="mb-3">#}
+{#                <label for="na">Name</label>#}
+{#                <input type="text" id="na" name="na" class="form-control" required pattern="^[A-Za-z]+$"#}
+{#                       title="Only letters allowed" oninput="capitalizeFirstLetter(event)"#}
+{#                       onblur="validateField('na', 'nameError', /^[A-Za-z]+$/, 'Invalid name. Only letters allowed.')">#}
+{#                <div id="nameError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="pl">Place</label>#}
+{#                <input type="text" id="pl" name="pl" class="form-control" required pattern="^[A-Za-z]+$"#}
+{#                       title="Only letters allowed" oninput="capitalizeFirstLetter(event)"#}
+{#                       onblur="validateField('pl', 'placeError', /^[A-Za-z]+$/, 'Invalid place. Only letters allowed.')">#}
+{#                <div id="placeError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="ph">Phone Number</label>#}
+{#                <input type="text" id="ph" name="ph" class="form-control" required pattern="^[6-9]\d{9}$"#}
+{#                       minlength="10" maxlength="10" title="Valid 10-digit number starting with 6-9"#}
+{#                       onblur="validateField('ph', 'phoneError', /^[6-9]\d{9}$/, 'Invalid phone number. Must be 10 digits and start with 6-9.')">#}
+{#                <div id="phoneError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="em">Email</label>#}
+{#                <input type="email" id="em" name="em" class="form-control" required#}
+{#                       onblur="validateField('em', 'emailError', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address.')">#}
+{#                <div id="emailError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="us">Username</label>#}
+{#                <input type="text" id="un" name="un" class="form-control" required>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="ps">Password</label>#}
+{#                <input type="password" id="ps" name="ps" class="form-control" required>#}
+{#            </div>#}
+{#            <div class="d-grid gap-2">#}
+{#                <button type="reset" class="btn btn-secondary">Cancel</button>#}
+{#                <button type="submit" class="btn btn-primary">Register</button>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+{#{% extends 'temp/homebase.html' %}#}
+{##}
+{#{% block base %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Registration</title>#}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">#}
+{#    <style>#}
+{##}
+{#        .card {#}
+            {#background: #ffffff;#}
+{#            padding: 40px;#}
+{#            border-radius: 15px;#}
+{#            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);#}
+{#            max-width: 400px;#}
+{#            width: 100%;#}
+{#            animation: fadeIn 0.5s ease-in-out;#}
+{#        }#}
+{#        h2 {#}
+{#            color: #4CAF50;#}
+{#            margin-bottom: 20px;#}
+{#        }#}
+{#        form {#}
+{#            margin-top: 20px;#}
+{#        }#}
+{#        .form-control {#}
+{#            border-radius: 8px;#}
+{#            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);#}
+{#        }#}
+{#        .btn-primary {#}
+{#            background: #6a11cb;#}
+{#            border: none;#}
+{#            transition: background 0.2s;#}
+{#        }#}
+{#        .btn-primary:hover {#}
+{#            background: #2575fc;#}
+{#        }#}
+{#        .btn-secondary {#}
+{#            background: #95a5a6;#}
+{#            border: none;#}
+{#        }#}
+{#        .error-message {#}
+{#            color: red;#}
+{#            font-size: 12px;#}
+{#            margin-top: 5px;#}
+{#        }#}
+{#        @keyframes fadeIn {#}
+{#            from { opacity: 0; transform: translateY(-20px); }#}
+{#            to { opacity: 1; transform: translateY(0); }#}
+{#        }#}
+{#    </style>#}
+{#    <script>#}
+{#        function capitalizeFirstLetter(event) {#}
+{#            const input = event.target;#}
+{#            input.value = input.value.charAt(0).toUpperCase() + input.value.slice(1);#}
+{#        }#}
+{##}
+{#        function validateField(inputId, errorId, regex, errorMessage) {#}
+{#            const input = document.getElementById(inputId);#}
+{#            const error = document.getElementById(errorId);#}
+{#            if (input.value.trim() === "") {#}
+{#                error.style.display = 'none';#}
+{#                return;#}
+{#            }#}
+{#            if (!regex.test(input.value)) {#}
+{#                error.textContent = errorMessage;#}
+{#                error.style.display = 'block';#}
+{#            } else {#}
+{#                error.style.display = 'none';#}
+{#            }#}
+{#        }#}
+{##}
+{##}
+{#    </script>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center align-items-center min-vh-100">#}
+{#    <div class="card text-center">#}
+{#        <h2 class="mb-4" style="color: black">User Registration</h2>#}
+{##}
+{#        {% if msg %}#}
+{#        <div class="alert alert-info" role="alert">#}
+{#            {{ msg }}#}
+{#        </div>#}
+{#        {% endif %}#}
+{##}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <div class="mb-3">#}
+{#                <label for="na" class="form-label">Name</label>#}
+{#                <input type="text" id="na" name="na" class="form-control" required pattern="^[A-Za-z]+$"#}
+{#                       title="Only letters allowed" oninput="capitalizeFirstLetter(event)"#}
+{#                       onblur="validateField('na', 'nameError', /^[A-Za-z]+$/, 'Invalid name. Only letters allowed.')">#}
+{#                <div id="nameError" class="error-message"></div>#}
+{#            </div>#}
+{##}
+{#            <div class="mb-3">#}
+{#    <label for="na" class="form-label">Name</label>#}
+{#    <input type="text" id="na" name="na" class="form-control" required#}
+{#           pattern="^[A-Za-z]+(\.? ?[A-Za-z]+)*$"#}
+{#           title="Only letters, spaces, and optional initials (e.g., A. Kumar) are allowed"#}
+{#           oninput="capitalizeFirstLetter(event)"#}
+{#           onblur="validateField('na', 'nameError', /^[A-Za-z]+(\.? ?[A-Za-z]+)*$/, 'Invalid name. Use letters, spaces, and optional initials only.')">#}
+{#    <div id="nameError" class="error-message"></div>#}
+{#</div>#}
+{##}
+{#            <div class="mb-3">#}
+{#                <label for="pl" class="form-label">Place</label>#}
+{#                <input type="text" id="pl" name="pl" class="form-control" required pattern="^[A-Za-z]+$"#}
+{#                       title="Only letters allowed" oninput="capitalizeFirstLetter(event)"#}
+{#                       onblur="validateField('pl', 'placeError', /^[A-Za-z]+$/, 'Invalid place. Only letters allowed.')">#}
+{#                <div id="placeError" class="error-message"></div>#}
+{#            </div>#}
+{##}
+{#            <div class="mb-3">#}
+{#    <label for="pl" class="form-label">Place</label>#}
+{#    <input type="text" id="pl" name="pl" class="form-control" required#}
+{#           pattern="^[A-Za-z0-9]+([ .-]?[A-Za-z0-9]+)*$"#}
+{#           title="Letters, numbers, spaces, dots, and hyphens allowed"#}
+{#           oninput="capitalizeFirstLetter(event)"#}
+{#           onblur="validateField('pl', 'placeError', /^[A-Za-z0-9]+([ .-]?[A-Za-z0-9]+)*$/, 'Invalid place. Use letters, numbers, spaces, dots, or hyphens only.')">#}
+{#    <div id="placeError" class="error-message"></div>#}
+{#</div>#}
+{##}
+{#            <div class="mb-3">#}
+{#                <label for="ph" class="form-label">Phone Number</label>#}
+{#                <input type="text" id="ph" name="ph" class="form-control" required pattern="^[6-9]\d{9}$"#}
+{#                       minlength="10" maxlength="10" title="Valid 10-digit number starting with 6-9"#}
+{#                       onblur="validateField('ph', 'phoneError', /^[6-9]\d{9}$/, 'Invalid phone number. Must be 10 digits and start with 6-9.')">#}
+{#                <div id="phoneError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="em" class="form-label">Email</label>#}
+{#                <input type="email" id="em" name="em" class="form-control" required#}
+{#                       onblur="validateField('em', 'emailError', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address.')">#}
+{#                <div id="emailError" class="error-message"></div>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="un" class="form-label">Username</label>#}
+{#                <input type="text" id="un" name="un" class="form-control" required>#}
+{#            </div>#}
+{#            <div class="mb-3">#}
+{#                <label for="ps" class="form-label">Password</label>#}
+{#                <input type="password" id="ps" name="ps" class="form-control" required>#}
+{#            </div>#}
+{##}
+{#            <div class="d-grid gap-2">#}
+{#                <button type="reset" class="btn btn-secondary">Cancel</button>#}
+{#                <button type="submit" class="btn btn-primary">Register</button>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'temp/homebase.html' %}
+
+{% block base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .form-wrapper {
+            min-height: 100vh;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        .card {
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-control {
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background: #6a11cb;
+            border: none;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: #2575fc;
+        }
+        .btn-secondary {
+            background: #95a5a6;
+            border: none;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <script>
+        function capitalizeFirstLetter(event) {
+            const input = event.target;
+            input.value = input.value.charAt(0).toUpperCase() + input.value.slice(1);
+        }
+
+        function validateField(inputId, errorId, regex, errorMessage) {
+            const input = document.getElementById(inputId);
+            const error = document.getElementById(errorId);
+            if (input.value.trim() === "") {
+                error.style.display = 'none';
+                return;
+            }
+            if (!regex.test(input.value)) {
+                error.textContent = errorMessage;
+                error.style.display = 'block';
+            } else {
+                error.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="container d-flex justify-content-center align-items-center form-wrapper">
+    <div class="card text-center">
+        <h2 class="mb-4" style="color: black">User Registration</h2>
+
+        {% if msg %}
+        <div class="alert alert-info" role="alert">
+            {{ msg }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="na" class="form-label">Name</label>
+                <input type="text" id="na" name="na" class="form-control" required
+                       pattern="^[A-Za-z]+(\.? ?[A-Za-z]+)*$"
+                       title="Only letters, spaces, and optional initials (e.g., A. Kumar) are allowed"
+                       oninput="capitalizeFirstLetter(event)"
+                       onblur="validateField('na', 'nameError', /^[A-Za-z]+(\.? ?[A-Za-z]+)*$/, 'Invalid name. Use letters, spaces, and optional initials only.')">
+                <div id="nameError" class="error-message"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="pl" class="form-label">Place</label>
+                <input type="text" id="pl" name="pl" class="form-control" required
+                       pattern="^[A-Za-z0-9]+([ .-]?[A-Za-z0-9]+)*$"
+                       title="Letters, numbers, spaces, dots, and hyphens allowed"
+                       oninput="capitalizeFirstLetter(event)"
+                       onblur="validateField('pl', 'placeError', /^[A-Za-z0-9]+([ .-]?[A-Za-z0-9]+)*$/, 'Invalid place. Use letters, numbers, spaces, dots, or hyphens only.')">
+                <div id="placeError" class="error-message"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="ph" class="form-label">Phone Number</label>
+                <input type="text" id="ph" name="ph" class="form-control" required pattern="^[6-9]\d{9}$"
+                       minlength="10" maxlength="10" title="Valid 10-digit number starting with 6-9"
+                       onblur="validateField('ph', 'phoneError', /^[6-9]\d{9}$/, 'Invalid phone number. Must be 10 digits and start with 6-9.')">
+                <div id="phoneError" class="error-message"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="em" class="form-label">Email</label>
+                <input type="email" id="em" name="em" class="form-control" required
+                       onblur="validateField('em', 'emailError', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email address.')">
+                <div id="emailError" class="error-message"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="un" class="form-label">Username</label>
+                <input type="text" id="un" name="un" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="ps" class="form-label">Password</label>
+                <input type="password" id="ps" name="ps" class="form-control" required>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="reset" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

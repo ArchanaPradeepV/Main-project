@@ -1,0 +1,334 @@
+{##}
+{#{% extends 'temp/staffbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Admin View Feedback</title>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+{#    <style>#}
+{#        .form-container {#}
+{#            background: #fff;#}
+{#            padding: 30px 40px;#}
+{#            border-radius: 20px;#}
+{#            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);#}
+{#            max-width: 800px;#}
+{#            width: 100%;#}
+{#        }#}
+{#        h2 {#}
+{#            font-weight: 600;#}
+{#            color: #34495e;#}
+{#            margin-bottom: 25px;#}
+{#            text-align: center;#}
+{#        }#}
+{#        .feedback-item {#}
+{#            background: #f9f9f9;#}
+{#            padding: 20px;#}
+{#            margin-bottom: 15px;#}
+{#            border: 1px solid #dcdcdc;#}
+{#            border-radius: 10px;#}
+{#            transition: transform 0.2s;#}
+{#        }#}
+{#        .feedback-item:hover {#}
+{#            transform: translateY(-3px);#}
+{#            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);#}
+{#        }#}
+{#        .rating {#}
+{#            font-weight: bold;#}
+{#            color: #6a11cb;#}
+{#            margin-bottom: 5px;#}
+{#        }#}
+{#        .user {#}
+{#            font-size: 14px;#}
+{#            color: #7f8c8d;#}
+{#            margin-top: 5px;#}
+{#        }#}
+{#        .feedback-text {#}
+{#            color: #2c3e50;#}
+{#            line-height: 1.5;#}
+{#            margin-top: 10px;#}
+{#        }#}
+{#        .no-feedback {#}
+{#            text-align: center;#}
+{#            color: #7f8c8d;#}
+{#            font-size: 18px;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center align-items-center">#}
+{#    <div class="form-container">#}
+{#        <h2><i class="fas fa-comments"></i> Staff View Feedback</h2>#}
+{#        {% if a %}#}
+{#            {% for i in a %}#}
+{#                <div class="feedback-item">#}
+{#                    <p class="rating">Rating: {{ i.rating }} / 5</p>#}
+{#                    <p class="feedback-text"><strong>Feedback:</strong> {{ i.feedback }}</p>#}
+{#                    <p class="user"><strong>User:</strong> {{ i.user.name }}</p>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        {% else %}#}
+{#            <p class="no-feedback">No feedback available.</p>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+
+{#{% extends 'temp/staffbase.html' %}#}
+{#{% block base %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+{#    <title>Staff View Feedback</title>#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+{#    <style>#}
+{#        .form-container {#}
+{#            background: #fff;#}
+{#            padding: 30px 40px;#}
+{#            border-radius: 20px;#}
+{#            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);#}
+{#            max-width: 800px;#}
+{#            width: 100%;#}
+{#        }#}
+{#        h2 {#}
+{#            font-weight: 600;#}
+{#            color: #34495e;#}
+{#            margin-bottom: 25px;#}
+{#            text-align: center;#}
+{#        }#}
+{#        .feedback-item {#}
+{#            background: #f9f9f9;#}
+{#            padding: 20px;#}
+{#            margin-bottom: 15px;#}
+{#            border: 1px solid #dcdcdc;#}
+{#            border-radius: 10px;#}
+{#            transition: transform 0.2s;#}
+{#        }#}
+{#        .feedback-item:hover {#}
+{#            transform: translateY(-3px);#}
+{#            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);#}
+{#        }#}
+{#        .rating {#}
+{#            font-weight: bold;#}
+{#            color: #6a11cb;#}
+{#            margin-bottom: 5px;#}
+{#        }#}
+{#        .user {#}
+{#            font-size: 14px;#}
+{#            color: #7f8c8d;#}
+{#            margin-top: 5px;#}
+{#        }#}
+{#        .feedback-text {#}
+{#            color: #2c3e50;#}
+{#            line-height: 1.5;#}
+{#            margin-top: 10px;#}
+{#        }#}
+{#        .no-feedback {#}
+{#            text-align: center;#}
+{#            color: #7f8c8d;#}
+{#            font-size: 18px;#}
+{#        }#}
+{#        .pagination {#}
+{#            display: flex;#}
+{#            justify-content: center;#}
+{#            list-style: none;#}
+{#            padding: 0;#}
+{#        }#}
+{#        .pagination li {#}
+{#            margin: 0 5px;#}
+{#        }#}
+{#        .pagination a, .pagination span {#}
+{#            display: block;#}
+{#            padding: 8px 12px;#}
+{#            color: #6a11cb;#}
+{#            border: 1px solid #6a11cb;#}
+{#            border-radius: 5px;#}
+{#            text-decoration: none;#}
+{#        }#}
+{#        .pagination .current {#}
+{#            background: #6a11cb;#}
+{#            color: #fff;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container d-flex justify-content-center align-items-center">#}
+{#    <div class="form-container">#}
+{#        <h2><i class="fas fa-comments"></i> Staff View Feedback</h2>#}
+{#        {% if a %}#}
+{#            {% for i in a %}#}
+{#                <div class="feedback-item">#}
+{#                    <p class="rating">Rating: {{ i.rating }} / 5</p>#}
+{#                    <p class="feedback-text"><strong>Feedback:</strong> {{ i.feedback }}</p>#}
+{#                    <p class="user"><strong>User:</strong> {{ i.user.name }}</p>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#            <ul class="pagination">#}
+{#                {% if a.has_previous %}#}
+{#                    <li><a href="?page=1">&laquo; first</a></li>#}
+{#                    <li><a href="?page={{ a.previous_page_number }}">previous</a></li>#}
+{#                {% endif %}#}
+{##}
+{#                <li><span class="current">Page {{ a.number }} of {{ a.paginator.num_pages }}</span></li>#}
+{##}
+{#                {% if a.has_next %}#}
+{#                    <li><a href="?page={{ a.next_page_number }}">next</a></li>#}
+{#                    <li><a href="?page={{ a.paginator.num_pages }}">last &raquo;</a></li>#}
+{#                {% endif %}#}
+{#            </ul>#}
+{#        {% else %}#}
+{#            <p class="no-feedback">No feedback available.</p>#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+{% extends 'temp/staffbase.html' %}
+{% block base %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Staff View Feedback</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7fc;
+        }
+        .feedback-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            width: 100%;
+            margin: 30px auto;
+        }
+        h2 {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .feedback-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .feedback-table th, .feedback-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .feedback-table th {
+            background: #6a11cb;
+            color: white;
+            font-weight: 600;
+        }
+        .feedback-table tr:hover {
+            background: #f1f1f1;
+        }
+        .no-feedback {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .pagination li {
+            margin: 0 5px;
+        }
+        .pagination a, .pagination span {
+            display: block;
+            padding: 8px 12px;
+            color: #6a11cb;
+            border: 1px solid #6a11cb;
+            border-radius: 5px;
+            text-decoration: none;
+            background: #f9f9f9;
+        }
+        .pagination .current {
+            background: #6a11cb;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="feedback-container">
+        <h2><i class="fas fa-comments"></i> Staff View Feedback</h2>
+
+        {% if a %}
+            <table class="feedback-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Rating</th>
+                        <th>Feedback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in a %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.user.name }}</td>
+                        <td>{{ i.rating }} / 5</td>
+                        <td>{{ i.feedback }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <ul class="pagination">
+                {% if a.has_previous %}
+                    <li><a href="?page=1">&laquo; First</a></li>
+                    <li><a href="?page={{ a.previous_page_number }}">Previous</a></li>
+                {% endif %}
+
+                <li><span class="current">Page {{ a.number }} of {{ a.paginator.num_pages }}</span></li>
+
+                {% if a.has_next %}
+                    <li><a href="?page={{ a.next_page_number }}">Next</a></li>
+                    <li><a href="?page={{ a.paginator.num_pages }}">Last &raquo;</a></li>
+                {% endif %}
+            </ul>
+
+        {% else %}
+            <p class="no-feedback">No feedback available.</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}
